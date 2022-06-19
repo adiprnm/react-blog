@@ -1,28 +1,35 @@
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Post from "./pages/Post";
 import profileImage from "./images/profile.jpg";
 import styled from "styled-components";
-import About from "./pages/About";
+import Experience from "./pages/Experience";
 import "./App.css";
 
 const Profile = styled.div`
-  flex: 1 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eceff1;
+  flex: 1 1 40%;
 `;
 
 const Content = styled.div`
-  flex: 2 100%;
+  flex-basis: 60%;
+  background-color: wheat;
 `;
 
 const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 4rem 0;
 `;
 
 const ProfileImage = styled.img`
   height: 166px;
-  width: auto;
+  width: 166px;
   border-radius: 100%;
   padding: 1rem 0;
 `;
@@ -31,20 +38,21 @@ const Navbar = styled.ul`
   list-style: none;
   display: flex;
   justify-content: center;
-  padding-left: 0;
+  padding: 1rem 0;
 `;
 
 const Nav = styled.li`
-  padding-right: 2rem;
+  padding: 0 1rem;
   font-weight: 600;
   color: green;
 `;
 
 const Layout = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 80%;
+  margin: 0;
+  padding: 0 25rem;
+  flex-direction: column;
+  background-color: #eceff1;
   height: 100vh;
 `;
 
@@ -52,27 +60,27 @@ function App() {
   return (
     <BrowserRouter>
       <Layout>
-        <Profile>
-          <Wrapper>
+        <Wrapper>
+          <Profile>
             <ProfileImage src={profileImage} />
             <h1>Adi Purnama</h1>
             <span>Software Engineer</span>
-          </Wrapper>
-        </Profile>
-        <Content>
+          </Profile>
           <Navbar>
             <Nav>
               <Link to="/">Home</Link>
             </Nav>
             <Nav>
-              <Link to="/about">About</Link>
+              <Link to="/experiences">Experiences</Link>
             </Nav>
           </Navbar>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/experiences" element={<Experience />} />
           </Routes>
-        </Content>
+        </Wrapper>
+        {/* <Content>
+        </Content> */}
       </Layout>
     </BrowserRouter>
   );
