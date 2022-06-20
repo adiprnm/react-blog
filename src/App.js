@@ -3,28 +3,26 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import profileImage from "./images/profile.jpg";
 import styled from "styled-components";
 import Experience from "./pages/Experience";
-import "./App.css";
+import rails from "./images/rails.svg";
+import laravel from "./images/laravel.svg";
+import php from "./images/php.svg";
+import nodejs from "./images/nodejs.svg";
+import reactjs from "./images/reactjs.svg";
 
 const Profile = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #eceff1;
-  flex: 1 1 40%;
+  padding-top: 2rem;
 `;
 
-const Content = styled.div`
-  flex-basis: 60%;
-  background-color: wheat;
-`;
-
-const Wrapper = styled.div`
-  width: 100%;
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 0;
+  max-width: 600px;
+  padding: 0 1.5rem;
 `;
 
 const ProfileImage = styled.img`
@@ -34,14 +32,14 @@ const ProfileImage = styled.img`
   padding: 1rem 0;
 `;
 
-const Navbar = styled.ul`
+const Navigation = styled.ul`
   list-style: none;
   display: flex;
   justify-content: center;
   padding: 1rem 0;
 `;
 
-const Nav = styled.li`
+const NavItem = styled.li`
   padding: 0 1rem;
   font-weight: 600;
   color: green;
@@ -50,37 +48,66 @@ const Nav = styled.li`
 const Layout = styled.div`
   display: flex;
   margin: 0;
-  padding: 0 25rem;
   flex-direction: column;
+  align-items: center;
   background-color: #eceff1;
   height: 100vh;
+`;
+
+const Icon = styled.img`
+  height: 70px;
+`;
+
+const JobTitle = styled.span`
+  font-size: 12pt;
+  color: #757575;
+`;
+
+const Anchor = styled(Link)`
+  text-decoration: none;
+  color: #00897b;
 `;
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
-        <Wrapper>
+        <Container>
           <Profile>
             <ProfileImage src={profileImage} />
-            <h1>Adi Purnama</h1>
-            <span>Software Engineer</span>
+            <h2>Adi Purnama</h2>
+            <JobTitle>Software Engineer</JobTitle>
+            <Navigation>
+              <NavItem>
+                <Icon src={rails} />
+              </NavItem>
+              <NavItem>
+                <Icon src={laravel} />
+              </NavItem>
+              <NavItem>
+                <Icon src={php} />
+              </NavItem>
+              <NavItem>
+                <Icon src={nodejs} />
+              </NavItem>
+              <NavItem>
+                <Icon src={reactjs} />
+              </NavItem>
+            </Navigation>
           </Profile>
-          <Navbar>
-            <Nav>
-              <Link to="/">Home</Link>
-            </Nav>
-            <Nav>
-              <Link to="/experiences">Experiences</Link>
-            </Nav>
-          </Navbar>
+          <Navigation>
+            <NavItem>
+              <Anchor to="/">Home</Anchor>
+            </NavItem>
+            <NavItem>
+              <Anchor to="/experiences">Experiences</Anchor>
+            </NavItem>
+          </Navigation>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/experiences" element={<Experience />} />
           </Routes>
-        </Wrapper>
-        {/* <Content>
-        </Content> */}
+        </Container>
       </Layout>
     </BrowserRouter>
   );
