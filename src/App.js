@@ -51,7 +51,8 @@ const Layout = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #eceff1;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 `;
 
 const Icon = styled.img`
