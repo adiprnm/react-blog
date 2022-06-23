@@ -8,6 +8,7 @@ import laravel from "./images/laravel.svg";
 import php from "./images/php.svg";
 import nodejs from "./images/nodejs.svg";
 import reactjs from "./images/reactjs.svg";
+import { ErrorBoundary } from "react-error-boundary";
 
 const Profile = styled.div`
   display: flex;
@@ -51,7 +52,8 @@ const Layout = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #eceff1;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 `;
 
 const Icon = styled.img`
@@ -67,6 +69,16 @@ const Anchor = styled(Link)`
   text-decoration: none;
   color: #00897b;
 `;
+
+const ErrorFallback = ({error, resetErrorBoundary}) => {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  )
+}
 
 function App() {
   return (
@@ -103,10 +115,12 @@ function App() {
               <Anchor to="/experiences">Experiences</Anchor>
             </NavItem>
           </Navigation>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/experiences" element={<Experience />} />
-          </Routes>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/experiences" element={<Experience />} />
+            </Routes>
+          </ErrorBoundary>
         </Container>
       </Layout>
     </BrowserRouter>

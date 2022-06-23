@@ -1,7 +1,4 @@
-import PostList from "../components/posts/PostList";
-import postsMock from "../mocks/posts";
 import Paragraph from "../components/Paragraph";
-import Wrapper from "../components/Wrapper";
 
 export default function Home() {
   return (

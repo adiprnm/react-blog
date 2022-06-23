@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import ExperienceCard from "../components/ExperienceCard";
+import experiences from "../data/experiences";
 
 const Experience = () => {
-  return <p>Coming soon</p>;
+  return experiences.map((experience) => (
+    <ExperienceCard experience={experience} />
+  ));
 };
 
 export default Experience;
