@@ -4,6 +4,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-wrap: wrap;
   width: 100%;
   background-color: #ffffff;
   border-radius: 0.5rem;
